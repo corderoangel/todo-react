@@ -1,13 +1,7 @@
-import { useState } from "react";
 import "./TodoSearch.css";
 
-function TodoSearch(){
-
-    const [searchValue, setSearchValue] = useState("");
-
-    console.log("buscando: " + searchValue);
-
-
+function TodoSearch({searchValue, setSearchValue}){
+   
     return (
         <input className="TodoSearch"
         placeholder="Escribir todo"

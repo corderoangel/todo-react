@@ -9,15 +9,22 @@ import React from 'react';
 const defaultTodos = [
 	{ text: "Aprender react", completed: true },
 	{ text: "Aprender vite", completed: true },
-	{ text: "Aprender next.js", completed: false },
+	{ text: "Aprender next.js", completed: true },
 	{ text: "Aprender Astro", completed: false },
 ];
 
 function App() {
+
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => todo.completed).length;
+  const totalTodos = todos.length;
+
   return (
     <React.Fragment>
-      <TodoCounter completed={1} total={4}/>
-      <TodoSearch/>
+      <TodoCounter completed={completedTodos} total={totalTodos}/>
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       <TodoList>
         {
           defaultTodos.map((todo) => (
