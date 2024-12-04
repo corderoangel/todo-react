@@ -1,21 +1,21 @@
 import './App.css';
+import { TodoCounter } from './TodoCounter';
+import { TodoItem } from './TodoItem';
+import { TodoList } from './TodoList';
+import { TodoSearch } from './TodoSearch';
 
 function App() {
   return (
     <div className="App">
-      <TodoItem />
+      <TodoCounter />
+      <TodoSearch/>
+      <TodoList>
+        <TodoItem />
+      </TodoList>
     </div>
   );
 }
 
-function TodoItem(){
-  return(
-    <li>
-      <span>V</span>
-      <p>Estudiar react</p>
-      <span>X</span>
-    </li>
-  );
-}
+
 
 export default App;
