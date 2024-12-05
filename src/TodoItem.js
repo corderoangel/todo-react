@@ -3,9 +3,9 @@ import "./TodoItem.css";
 function TodoItem(props){
     return(
       <li className="TodoItem">
-        <span>V</span>
+        <span onClick={props.onComplete}>V</span>
         <p>{props.text}</p>
-        <span>X</span>
+        <span onClick={props.onDelete}>X</span>
       </li>
     );
   };
