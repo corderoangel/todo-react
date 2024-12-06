@@ -1,3 +1,5 @@
+import React from "react";
+
 import "./TodoSearch.css";
 
 function TodoSearch({searchValue, setSearchValue}){
@@ -12,5 +14,6 @@ function TodoSearch({searchValue, setSearchValue}){
         />
     );
 }
+
 
 export {TodoSearch};
