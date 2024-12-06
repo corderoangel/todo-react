@@ -7,14 +7,16 @@ import { TodosLoading } from '../TodosLoading/index'
 import { TodosError } from '../TodosError/index'
 import { EmptyTodos } from '../EmptyTodos/index'
 import { TodoContext } from '../TodoContext';
+import React from 'react';
 
 function AppUI(){    
+
+	const {completeTodo, deleteTodo, loading, error, searchedTodos} = React.useContext(TodoContext);
+
     return (
         <>
           <TodoCounter />
           <TodoSearch />
-          <TodoContext.Consumer>
-             {({completeTodo, deleteTodo, loading, error, searchedTodos}) => (
                 <TodoList>
 
                 {loading && (
@@ -36,8 +38,6 @@ function AppUI(){
                   ))
                 }
               </TodoList>
-            )}
-          </TodoContext.Consumer>
           <CreateTodoButton />
         </>
       );
