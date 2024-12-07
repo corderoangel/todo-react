@@ -8,37 +8,51 @@ import { TodosError } from '../TodosError/index'
 import { EmptyTodos } from '../EmptyTodos/index'
 import { TodoContext } from '../TodoContext';
 import React from 'react';
+import { Modal } from '../Modal';
 
 function AppUI(){    
 
-	const {completeTodo, deleteTodo, loading, error, searchedTodos} = React.useContext(TodoContext);
+	const {
+          completeTodo, 
+          deleteTodo, 
+          loading, 
+          error, 
+          searchedTodos,
+          openModal,
+          setOpenModal
+        } = React.useContext(TodoContext);
 
     return (
         <>
           <TodoCounter />
           <TodoSearch />
-                <TodoList>
+          <TodoList>
 
-                {loading && (
-                  <>
-                    <TodosLoading />
-                    <TodosLoading />
-                    <TodosLoading />
-                  </>
-                )}
-                {error && <TodosError />}
+            {loading && (
+              <>
+                <TodosLoading />
+                <TodosLoading />
+                <TodosLoading />
+              </>
+            )}
 
-                {!loading && searchedTodos.length === 0 && <EmptyTodos />}
+            {error && <TodosError />}
 
-                {searchedTodos.map((todo) => (
-                    <TodoItem key={todo.text} text={todo.text} completed={todo.completed} 
-                    onComplete = {() => completeTodo(todo.text)}
-                    onDelete = {() => deleteTodo(todo.text)}
-                    />
-                  ))
-                }
-              </TodoList>
+            {!loading && searchedTodos.length === 0 && <EmptyTodos />}
+
+            {searchedTodos.map((todo) => (
+                <TodoItem key={todo.text} 
+                          text={todo.text} 
+                          completed={todo.completed} 
+                          onComplete = {() => completeTodo(todo.text)}
+                          onDelete = {() => deleteTodo(todo.text)}/>))
+              }
+
+          </TodoList>
           <CreateTodoButton />
+
+          {openModal && <Modal><h2>HOLA MUNDO DESDE UN PORTAL</h2></Modal>}
+          
         </>
       );
 }
