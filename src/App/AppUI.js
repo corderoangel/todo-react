@@ -9,6 +9,7 @@ import { EmptyTodos } from '../EmptyTodos/index'
 import { TodoContext } from '../TodoContext';
 import React from 'react';
 import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
 
 function AppUI(){    
 
@@ -49,9 +50,12 @@ function AppUI(){
               }
 
           </TodoList>
-          <CreateTodoButton />
+          <CreateTodoButton setOpenModal={setOpenModal}/>
 
-          {openModal && <Modal><h2>HOLA MUNDO DESDE UN PORTAL</h2></Modal>}
+          {openModal && 
+          (<Modal>
+            <TodoForm/>
+          </Modal>)}
           
         </>
       );
